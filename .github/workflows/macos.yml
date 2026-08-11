@@ -1,0 +1,26 @@
+name: macOS Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  macos:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check macOS
+        run: |
+          echo "===== macOS ====="
+          sw_vers
+
+          echo "===== Xcode ====="
+          xcodebuild -version
+
+          echo "===== Hardware ====="
+          system_profiler SPHardwareDataType
+
+          echo "===== Storage ====="
+          df -h
